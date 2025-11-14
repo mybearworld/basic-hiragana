@@ -26,13 +26,16 @@
   </body>
   <script type="module">
     // prettier-ignore
-    const hiragana = ["あ","い","う","え","お","か","が","き","ぎ","く","ぐ","け","げ","こ","ご","さ","ざ","し","じ","す","ず","せ","ぜ","そ","ぞ","た","だ","ち","ぢ","つ","づ","て","で","と","ど","な","に","ぬ","ね","の","は","ば","ぱ","ひ","び","ぴ","ふ","ぶ","ぷ","へ","べ","ぺ","ほ","ぼ","ぽ","ま","み","む","め","も","や","ゆ","よ","ら","り","る","れ","ろ","わ","を","ん"];
+    const hiragana = [["あ"],["い"],["う"],["え"],["お"],["か","が"],["き","ぎ"],["く","ぐ"],["け","げ"],["こ","ご"],["さ","ざ"],["し","じ"],["す","ず"],["せ","ぜ"],["そ","ぞ"],["た","だ"],["ち","ぢ"],["つ","づ"],["て","で"],["と","ど"],["な"],["に"],["ぬ"],["ね"],["の"],["は","ば","ぱ"],["ひ","び","ぴ"],["ふ","ぶ","ぷ"],["へ","べ","ぺ"],["ほ","ぼ","ぽ"],["ま"],["み"],["む"],["め"],["も"],["や"],["ゆ"],["よ"],["ら"],["り"],["る"],["れ"],["ろ"],["わ"],["を"],["ん"]];
 
     const kana = document.querySelector("#kana");
     const input = document.querySelector("input");
 
     const update = () => {
-      const currentKana = hiragana[Math.floor(Math.random() * hiragana.length)];
+      const currentKanaGroup =
+        hiragana[Math.floor(Math.random() * hiragana.length)];
+      const currentKana =
+        currentKanaGroup[Math.floor(Math.random() * currentKanaGroup.length)];
       kana.textContent = currentKana;
       const listener = () => {
         if (input.value === currentKana) {
