@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Hiragana</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      * {
+        font-family: sans-serif;
+      }
+      #kana {
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="kana"></div>
+    <input type="text" />
+  </body>
+  <script type="module">
+    // prettier-ignore
+    const hiragana = ["あ","い","う","え","お","か","が","き","ぎ","く","ぐ","け","げ","こ","ご","さ","ざ","し","じ","す","ず","せ","ぜ","そ","ぞ","た","だ","ち","ぢ","っ","つ","づ","て","で","と","ど","な","に","ぬ","ね","の","は","ば","ぱ","ひ","び","ぴ","ふ","ぶ","ぷ","へ","べ","ぺ","ほ","ぼ","ぽ","ま","み","む","め","も","や","ゆ","よ","ら","り","る","れ","ろ","わ","を","ん"];
+
+    const kana = document.querySelector("#kana");
+    const input = document.querySelector("input");
+
+    const update = () => {
+      const currentKana = hiragana[Math.floor(Math.random() * hiragana.length)];
+      kana.textContent = currentKana;
+      const listener = () => {
+        if (input.value === currentKana) {
+          input.removeEventListener("input", listener);
+          input.value = "";
+          update();
+        }
+      };
+      input.addEventListener("input", listener);
+    };
+    update();
+  </script>
+</html>
